@@ -27,7 +27,7 @@ import com.example.food_app_compose.ui.theme.CCComposeTheme
 import com.example.food_app_compose.ui.theme.CCTheme
 
 @Composable
-fun FAActionBar(
+fun CCActionBar(
     modifier: Modifier = Modifier,
     leadingIcon: @Composable (() -> Unit)? = null,
     trailingIcon: @Composable (RowScope.() -> Unit)? = null,
@@ -77,7 +77,7 @@ fun FAActionBar(
 @Composable
 fun PreviewActionBar() {
     CCComposeTheme() {
-        FAActionBar(
+        CCActionBar(
             modifier = Modifier.fillMaxWidth(),
             leadingIcon = {
                 Icon(

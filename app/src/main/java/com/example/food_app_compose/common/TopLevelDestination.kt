@@ -1,16 +1,13 @@
-package com.example.food_app_compose.presentation.splash.common
+package com.example.food_app_compose.common
 
-import android.graphics.drawable.Icon
 import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
-import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.food_app_compose.R
 import com.example.food_app_compose.presentation.home.homeRoute
 import com.example.food_app_compose.presentation.order.orderRoute
 import com.example.food_app_compose.presentation.profile.profileRoute
 import com.example.food_app_compose.presentation.search.searchRoute
 
-enum class ItemNavigation(
+enum class TopLevelDestination(
     @DrawableRes
     val selectedIconRes: Int,
     @DrawableRes

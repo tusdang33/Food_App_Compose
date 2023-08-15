@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Food_App_Compose</string>
+    //SplashScreen
+    <string name="welcome">Welcome</string>
+    <string name="splash_title">Tamang \nFoodService</string>
+    <string name="splash_description">It’s a pleasure to meet you. We are excited that you’re here so let’s get started!</string>
+    //SignInScreen
+    <string name="sign_in">Sign In</string>
+    <string name="signin_title">Welcome to Tamang Food Services</string>
+    <string name="signin_description">Enter your Phone number or Email address for sign in. Enjoy your food :)</string>
+    <string name="email_label">Email</string>
+    <string name="password_label">Password</string>
+    <string name="signin_button">SIGN IN</string>
+    <string name="dont_have_account">Don\'t have account ?</string>
+    <string name="create_account">Create new account</string>
 </resources>
