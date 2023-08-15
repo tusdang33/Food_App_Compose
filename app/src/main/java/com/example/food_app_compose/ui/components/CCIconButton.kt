@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.requiredHeightIn
 import androidx.compose.foundation.layout.requiredWidthIn
 import androidx.compose.material.ripple.rememberRipple
@@ -33,6 +34,7 @@ fun CCIconButton(
     BoxWithConstraints(
         contentAlignment = Alignment.Center,
         modifier = modifier
+            .background(backgroundColor)
             .requiredHeightIn(size)
             .requiredWidthIn(size)
             .clickable(
@@ -42,10 +44,10 @@ fun CCIconButton(
                 interactionSource = interactionSource,
                 indication = rememberRipple()
             )
-            .background(backgroundColor)
     ) {
         icon()
     }
+    
 }
 @Preview
 @Composable

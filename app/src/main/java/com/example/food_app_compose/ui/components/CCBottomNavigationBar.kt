@@ -20,15 +20,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import com.example.food_app_compose.R
-import com.example.food_app_compose.presentation.splash.common.ItemNavigation
+import com.example.food_app_compose.common.TopLevelDestination
+import com.example.food_app_compose.isTopLevelDestinationInHierarchy
 import com.example.food_app_compose.ui.theme.CCTheme
 
 @Composable
 fun CCBottomNavigationBar(
     modifier: Modifier = Modifier,
-    items: List<ItemNavigation>,
+    destinations: List<TopLevelDestination>,
     currentDestination: NavDestination?,
-    onItemClick: (ItemNavigation) -> Unit
+    onNavigateToDestination: (TopLevelDestination) -> Unit
 ) {
 
     Row(
@@ -40,23 +41,27 @@ fun CCBottomNavigationBar(
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        items.forEach { itemNavigation ->
+        destinations.forEach { itemNavigation ->
             val selected =
-                itemNavigation.route == currentDestination?.route
+                currentDestination.isTopLevelDestinationInHierarchy(itemNavigation)
             CCBottomNavigationItem(
                 modifier = Modifier,
                 selected = selected,
-                onClick = { onItemClick(itemNavigation) },
+                onClick = { onNavigateToDestination(itemNavigation) },
                 icon = {
-                    CCIconButton(onClick ={}, backgroundColor = Color.Transparent) {
+                    CCIconButton(onClick = {}, backgroundColor = Color.Transparent) {
                         Image(
-                            painter = painterResource(id = if (selected) itemNavigation.selectedIconRes else itemNavigation.unselectedIconRes
-                        ), contentDescription = "")
+                            painter = painterResource(
+                                id = if (selected) itemNavigation.selectedIconRes else itemNavigation.unselectedIconRes
+                            ), contentDescription = ""
+                        )
                     }
                 },
-                label ={
-                    Text(text = itemNavigation.nameItem,
-                        style = LocalTextStyle.current.copy(color = if(selected) CCTheme.colors.active else CCTheme.colors.bodyText))
+                label = {
+                    Text(
+                        text = itemNavigation.nameItem,
+                        style = LocalTextStyle.current.copy(color = if (selected) CCTheme.colors.active else CCTheme.colors.bodyText)
+                    )
                 }
             )
         }

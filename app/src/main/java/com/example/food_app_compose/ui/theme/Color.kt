@@ -4,7 +4,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
-internal val CCActiveColor = Color(0xFFF2994A)
+internal val CCActiveColor = Color(0xFFEEA734)
 internal val CCAccentColor = Color(0xFFEF9920)
 internal val CCMainColor = Color(0xFF010F07)
 internal val CCBodyText = Color(0xFF868686)
