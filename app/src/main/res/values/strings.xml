@@ -13,4 +13,14 @@
     <string name="signin_button">SIGN IN</string>
     <string name="dont_have_account">Don\'t have account ?</string>
     <string name="create_account">Create new account</string>
+    //SignUpScreen
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_title">Create Account</string>
+    <string name="sign_up_description">Enter your Name, Email and Password for sign up.</string>
+    <string name="already_have_account">Already have account?</string>
+    <string name="full_name">Full name</string>
+    <string name="email_address">Email address</string>
+    <string name="password">Password</string>
+    <string name="sign_up_button">Sign up</string>
+    <string name="privacy">By Signing up you agree to our Terms Conditions &amp; Privacy Policy.</string>
 </resources>
