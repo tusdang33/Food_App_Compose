@@ -1,7 +1,5 @@
 package com.example.food_app_compose.presentation.splash
 
-import android.net.wifi.hotspot2.pps.HomeSp
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -15,6 +13,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -28,7 +27,6 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.food_app_compose.R
 import com.example.food_app_compose.ui.theme.CCTheme
 import kotlinx.coroutines.delay
@@ -41,14 +39,14 @@ fun SplashRoute(
 ) {
     val splashEvent by splashViewModel.oneTimeEvent.collectAsStateWithLifecycle(initialValue = null)
     
-    LaunchedEffect(Unit){
-        delay(3000L)
-        splashViewModel.checkCurrentUser()
+    SideEffect{
+        splashViewModel.onEvent(SplashEvent.CheckCurrentUser)
     }
 
     when(splashEvent){
         is SplashOneTimeEvent.LoginSuccess -> navigateToHome.invoke()
-        else -> navigateToSignIn.invoke()
+        is SplashOneTimeEvent.LoginFail -> navigateToSignIn.invoke()
+        else -> {/*noop*/}
     }
     
     SplashScreen(modifier = Modifier.fillMaxSize())
