@@ -1,8 +1,9 @@
-package com.example.food_app_compose.presentation.authentication.signin
+package com.example.food_app_compose.presentation.authentication.signin.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import com.example.food_app_compose.presentation.authentication.signin.SignInRoute
 
 const val signInRoute = "sign_in_route"
 

@@ -11,6 +11,7 @@ import com.example.food_app_compose.presentation.base.RootViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -68,17 +69,16 @@ class SignInViewModel @Inject constructor(
 		}
 	}
 	
-	private fun login() {
-		viewModelScope.launch(ioDispatcher + coroutineExceptionHandler) {
-			sendEvent(SignInOneTimeEvent.Loading)
-			authRepository.login(_signInUiState.value.email, _signInUiState.value.password)
-				.success {
-					sendEvent(SignInOneTimeEvent.Success)
-				}
-				.fail {
-					sendEvent(SignInOneTimeEvent.Fail(it))
-				}
-		}
+	private fun login() = viewModelScope.launch(ioDispatcher + coroutineExceptionHandler) {
+		sendEvent(SignInOneTimeEvent.Loading)
+		delay(300L)
+		authRepository.login(_signInUiState.value.email, _signInUiState.value.password)
+			.success {
+				sendEvent(SignInOneTimeEvent.Success)
+			}
+			.fail {
+				sendEvent(SignInOneTimeEvent.Fail(it))
+			}
 	}
 }
 

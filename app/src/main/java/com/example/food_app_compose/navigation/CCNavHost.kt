@@ -5,25 +5,24 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.example.food_app_compose.presentation.authentication.signin.navigation.navigateToSignIn
 import com.example.food_app_compose.presentation.authentication.signin.navigation.signInGraph
-import com.example.food_app_compose.presentation.authentication.signin.navigation.signInRoute
 import com.example.food_app_compose.presentation.authentication.signup.navigation.navigateToSignUp
 import com.example.food_app_compose.presentation.authentication.signup.navigation.signUpGraph
 import com.example.food_app_compose.presentation.home.homeGraph
 import com.example.food_app_compose.presentation.home.navigateToHome
-import com.example.food_app_compose.presentation.order.navigateToOrder
 import com.example.food_app_compose.presentation.order.orderGraph
 import com.example.food_app_compose.presentation.profile.profileGraph
 import com.example.food_app_compose.presentation.search.searchGraph
 import com.example.food_app_compose.presentation.splash.splashGraph
+import com.example.food_app_compose.presentation.splash.splashRoute
 
 @Composable
 fun CCBottomNavGraph(
     navController: NavHostController
 ) {
-    NavHost(navController = navController, startDestination = signInRoute) {
+    NavHost(navController = navController, startDestination = splashRoute) {
         splashGraph(
             navigateToHome = { navController.navigateToHome() },
-            navigateToSignIn = { navController.navigateToOrder() })
+            navigateToSignIn = { navController.navigateToSignIn() })
         homeGraph()
         searchGraph()
         orderGraph()
