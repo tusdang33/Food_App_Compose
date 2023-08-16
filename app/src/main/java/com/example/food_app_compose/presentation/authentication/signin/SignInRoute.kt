@@ -1,6 +1,5 @@
 package com.example.food_app_compose.presentation.authentication.signin
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -16,13 +15,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.Icon
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -51,17 +47,13 @@ fun SignInRoute(
 ) {
 	val signInUiState by signInViewModel.uiState.collectAsStateWithLifecycle()
 	val signInOneTimeEvent by signInViewModel.oneTimeEvent.collectAsStateWithLifecycle(initialValue = null)
-	val snackbarHostState = remember {
-		SnackbarHostState()
-	}
-	val coroutineScope = rememberCoroutineScope()
-	Log.e("tudm", "${signInOneTimeEvent is SignInOneTimeEvent.Loading}")
+
 	SignInScreen(
 		modifier = Modifier
 			.background(CCTheme.colors.white)
 			.fillMaxSize()
 			.padding(20.dp),
-		signInUiState = signInUiState as SignInUiState,
+		signInUiState = signInUiState,
 		onEvent = signInViewModel::onEvent,
 		navigateToSignUp = navigateToSignUp
 	)
