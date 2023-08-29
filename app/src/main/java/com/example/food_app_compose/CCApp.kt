@@ -1,10 +1,12 @@
 package com.example.food_app_compose
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.LocalTextStyle
@@ -18,8 +20,7 @@ import com.example.food_app_compose.ui.components.CCBottomNavigationBar
 import com.example.food_app_compose.ui.theme.CCComposeTheme
 import com.example.food_app_compose.ui.theme.CCTheme
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun CCApp() {
     val appState = rememberAppState()
@@ -46,8 +47,13 @@ fun CCApp() {
                     }
                 }
             }
-        ) {
-            CCBottomNavGraph(navController = appState.navController)
+        ) { contentPadding ->
+            CCBottomNavGraph(
+                modifier = Modifier
+                    .padding(contentPadding)
+                    .consumeWindowInsets(contentPadding),
+                navController = appState.navController
+            )
         }
     }
 }
