@@ -1,6 +1,7 @@
 package com.example.food_app_compose.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.example.food_app_compose.presentation.authentication.signin.navigation.navigateToSignIn
@@ -17,9 +18,10 @@ import com.example.food_app_compose.presentation.splash.splashRoute
 
 @Composable
 fun CCBottomNavGraph(
+    modifier: Modifier = Modifier,
     navController: NavHostController
 ) {
-    NavHost(navController = navController, startDestination = splashRoute) {
+    NavHost(modifier = modifier, navController = navController, startDestination = splashRoute) {
         splashGraph(
             navigateToHome = { navController.navigateToHome() },
             navigateToSignIn = { navController.navigateToSignIn() })
